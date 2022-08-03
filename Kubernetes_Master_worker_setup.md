@@ -68,6 +68,8 @@ sudo apt-get install \
 sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo systemctl start docker
+sudo systemctl enable docker
 ```
 
 #### Step 4: Dependecy for kubernetes
@@ -94,7 +96,12 @@ systemctl enable kubelet
 
 systemctl start kubelet
 
-kubeadm init --pod-network-cidr=192.168.0.0/16 /// range of Ip to be given
+ { kubeadm init --pod-network-cidr=192.168.0.0/16 /// range of Ip to be given
+####error throws here ### solution is 
+
+rm /etc/containerd/config.toml
+systemctl restart containerd
+kubeadm init }
 
 mkdir -p $HOME/.kube 
 
