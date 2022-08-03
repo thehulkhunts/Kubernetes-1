@@ -100,7 +100,7 @@ systemctl start kubelet
 ####error throws here ### solution is 
 
 rm /etc/containerd/config.toml
-systemctl restart containerd
+systemctl restart containerd  --------> do it in both master and slaves
 kubeadm init }
 
 mkdir -p $HOME/.kube 
